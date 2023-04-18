@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * msl - main shell loop
- * @n: the parameter & return info struct
- * @av: the argument vector from main()
+ * msl - the shell loop main
+ * @n: info parameter that returns struct's data
+ * @av: the argument vector from the main()
  *
- * Return: 0 on success, 1 on error, or error code
+ * Return: 0 if successful, 1 if either error occurred, or error code
  */
 int msl(info_t *n, char **av)
 {
@@ -44,8 +44,8 @@ int msl(info_t *n, char **av)
 }
 
 /**
- * l_bn - finds a builtin command
- * @n: the parameter & return info struct
+ * l_bn - locates the built-in command
+ * @n: info parameter that returns struct's data
  *
  * Return: -1 if not to be found,
  *			0 for successful execution,
@@ -77,8 +77,8 @@ int l_bn(info_t *n)
 }
 
 /**
- * l_exmd - finds a command in PATH
- * @n: the parameter & return info struct
+ * l_exmd - locates any command in given path
+ * @n: info parameter that returns struct's data
  *
  * Return: void
  */
@@ -118,8 +118,8 @@ void l_exmd(info_t *n)
 }
 
 /**
- * dev_xmd - forks a an exec thread to run cmd
- * @n: the parameter & return info struct
+ * dev_xmd - func's prps is forking exc thrd for running command
+ * @n: info parameter that returns struct's data
  *
  * Return: void
  */
