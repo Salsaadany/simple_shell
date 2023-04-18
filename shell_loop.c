@@ -1,0 +1,158 @@
+#include "shell.h"
+
+/**
+ * msl - main shell loop
+ * @n: the parameter & return info struct
+ * @av: the argument vector from main()
+ *
+ * Return: 0 on success, 1 on error, or error code
+ */
+int msl(info_t *n, char **av)
+{
+	ssize_t x = 0;
+	int builtin_ret = 0;
+
+	while (x != -1 && builtin_ret != -2)
+	{
+		clear_info(n);
+		if (maati(n))
+			_puts("$ ");
+		_eputchar(BUF_FLUSH);
+		x = get_input(n);
+		if (x != -1)
+		{
+			set_info(n, av);
+			builtin_ret = find_builtin(info);
+			if (builtin_ret == -1)
+				find_cmd(n);
+		}
+		else if (maati(n))
+			_putchar('\n');
+		free_info(n, 0);
+	}
+	write_history(n);
+	free_info(n, 1);
+	if (!maati(n) && n->status)
+		exit(n->status);
+	if (builtin_ret == -2)
+	{
+		if (info->err_num == -1)
+			exit(n->status);
+		exit(n->err_num);
+	}
+	return (builtin_ret);
+}
+
+/**
+ * l_bn - finds a builtin command
+ * @n: the parameter & return info struct
+ *
+ * Return: -1 if not to be found,
+ *			0 for successful execution,
+ *			1 if found yet didn't succeed,
+ *			-2 if signals exit()
+ */
+int l_bn(info_t *n)
+{
+	int x, built_in_ret = -1;
+	builtin_table builtintbl[] = {
+		{"exit", _myexit},
+		{"env", _myenv},
+		{"help", _myhelp},
+		{"history", _myhistory},
+		{"setenv", _mysetenv},
+		{"unsetenv", _myunsetenv},
+		{"cd", _mycd},
+		{"alias", _myalias},
+		{NULL, NULL}};
+
+	for (x = 0; builtintbl[i].type; x++)
+		if (_strcmp(n->argv[0], builtintbl[x].type) == 0)
+		{
+			n->line_count++;
+			built_in_ret = builtintbl[x].func(n);
+			break;
+		}
+	return (built_in_ret);
+}
+
+/**
+ * l_exmd - finds a command in PATH
+ * @n: the parameter & return info struct
+ *
+ * Return: void
+ */
+void l_exmd(info_t *n)
+{
+	char *pt = NULL;
+	int x, y;
+
+	n->pt = n->argv[0];
+	if (n->linecount_flag == 1)
+	{
+		n->line_count++;
+		n->linecount_flag = 0;
+	}
+	for (x = 0, y = 0; n->arg[i]; x++)
+		if (!is_delim(n->arg[i], " \t\n"))
+			y++;
+	if (!y)
+		return;
+
+	pt = find_path(info, _getenv(n, "PATH="), info->argv[0]);
+	if (path)
+	{
+		n->pt = pt;
+		dev_xmd(info);
+	}
+	else
+	{
+		if ((maati(n) || _getenv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(info, n->argv[0]))
+			dev_xmd(info);
+		else if (*(n->arg) != '\n')
+		{
+			n->status = 127;
+			print_error(info, "not found\n");
+		}
+	}
+}
+
+/**
+ * dev_xmd - forks a an exec thread to run cmd
+ * @n: the parameter & return info struct
+ *
+ * Return: void
+ */
+void dev_xmd(info_t *n)
+{
+	pid_t child_pid;
+
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		/* TODO: PUT ERROR FUNCTION */
+		perror("Error:");
+		return;
+	}
+	if (child_pid == 0)
+	{
+		if (execve(n->pt, n->argv, get_environ(n)) == -1)
+		{
+			free_info(n, 1);
+			if (errno == EACCES)
+				exit(126);
+			exit(1);
+		}
+		/* TODO: PUT ERROR FUNCTION */
+	}
+	else
+	{
+		wait(&(n->status));
+		if (WIFEXITED(n->status))
+		{
+			n->status = WEXITSTATUS(n->status);
+			if (n->status == 126)
+				print_error(n, "Permission denied\n");
+		}
+	}
+}
