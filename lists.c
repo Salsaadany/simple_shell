@@ -136,7 +136,7 @@ int dl_nd(list_t **hd, unsigned int ndx)
 
 /**
  * x_lst - frees all nodes of a list
- * @head_ptr: address of pointer to head node
+ * @hd_pt: head node ptr's adrs
  *
  * Return: void
  */
