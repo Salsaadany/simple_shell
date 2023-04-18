@@ -24,7 +24,7 @@ int msl(info_t *n, char **av)
 			set_info(n, av);
 			builtin_ret = find_builtin(info);
 			if (builtin_ret == -1)
-				find_cmd(n);
+				l_exmd(n);
 		}
 		else if (maati(n))
 			_putchar('\n');
