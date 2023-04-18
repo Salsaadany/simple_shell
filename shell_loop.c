@@ -99,7 +99,7 @@ void l_exmd(info_t *n)
 	if (!y)
 		return;
 
-	pt = find_path(n, _getenv(n, "PATH="), n->argv[0]);
+	pt = l_pt(n, _getenv(n, "PATH="), n->argv[0]);
 	if (pt)
 	{
 		n->pt = pt;
