@@ -34,14 +34,14 @@ list_t *a_nd(list_t **hd, const char *str, int nmbr)
 }
 
 /**
- * aa_ndend - adds a node to the end of the list
+ * a_nnd - adds a node to the end of the list
  * @hd: address of pointer to head node
  * @str: str field of node
  * @nmbr: node index used by history
  *
  * Return: size of list
  */
-list_t *a_ndend(list_t **hd, const char *str, int nmbr)
+list_t *a_nnd(list_t **hd, const char *str, int nmbr)
 {
 	list_t *n_nd, *nd;
 
@@ -95,7 +95,7 @@ size_t p_lst(const list_t *fn)
 }
 
 /**
- * del_nd - wipes node at given index
+ * dl_nd - wipes node at given index
  * @hd: first node adrs pointr
  * @ndx: node's indx to be wiped
  *
