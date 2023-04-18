@@ -22,7 +22,7 @@ int msl(info_t *n, char **av)
 		if (x != -1)
 		{
 			set_info(n, av);
-			builtin_ret = find_builtin(info);
+			builtin_ret = l_bn(n);
 			if (builtin_ret == -1)
 				l_exmd(n);
 		}
