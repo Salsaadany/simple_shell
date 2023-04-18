@@ -93,26 +93,26 @@ void l_exmd(info_t *n)
 		n->line_count++;
 		n->linecount_flag = 0;
 	}
-	for (x = 0, y = 0; n->arg[i]; x++)
-		if (!is_delim(n->arg[i], " \t\n"))
+	for (x = 0, y = 0; n->arg[x]; x++)
+		if (!is_delim(n->arg[x], " \t\n"))
 			y++;
 	if (!y)
 		return;
 
-	pt = find_path(info, _getenv(n, "PATH="), info->argv[0]);
-	if (path)
+	pt = find_path(n, _getenv(n, "PATH="), n->argv[0]);
+	if (pt)
 	{
 		n->pt = pt;
-		dev_xmd(info);
+		dev_xmd(n);
 	}
 	else
 	{
-		if ((maati(n) || _getenv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(info, n->argv[0]))
+		if ((maati(n) || _getenv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
 			dev_xmd(info);
 		else if (*(n->arg) != '\n')
 		{
 			n->status = 127;
-			print_error(info, "not found\n");
+			print_error(n, "not found\n");
 		}
 	}
 }
