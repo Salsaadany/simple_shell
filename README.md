@@ -1,4 +1,7 @@
+This is the second ALX SE team project 
+
 General
+
 Who designed and implemented the original Unix operating system
 Who wrote the first version of the UNIX shell
 Who invented the B programming language (the direct predecessor to the C programming language)
@@ -11,4 +14,4 @@ How to create processes
 What are the three prototypes of main
 How does the shell use the PATH to find the programs
 How to execute another program with the execve system call
-f-fileŒ
+f-file√é
