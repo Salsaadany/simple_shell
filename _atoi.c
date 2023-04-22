@@ -6,34 +6,34 @@
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int maati(info_t *info)
+int maati(info_t *n)
 {
-	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && n->readfd <= 2);
 }
 
 /**
- * is_delim - checks if character is a delimeter
- * @c: the char to check
- * @delim: the delimeter string
+ * d_islem - checks if character is a delimeter
+ * @ch: the char to check
+ * @ld: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char *delim)
+int d_islem(char ch, char *ld)
 {
-	while (*delim)
-		if (*delim++ == c)
+	while (*ld)
+		if (*ld++ == ch)
 			return (1);
 	return (0);
 }
 
 /**
  * isalpha - checks for alphabetic character
- *@c: The character to input
+ *@ch: The character to input
  *Return: 1 if c is alphabetic, 0 otherwise
  */
 
-int isalpha(int c)
+int isalpha(int ch)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
 		return (1);
 	else
 		return (0);
@@ -41,34 +41,34 @@ int isalpha(int c)
 
 /**
  *_atoi - converts a string to an integer
- *@s: the string to be converted
+ *@st: the string to be converted
  *Return: 0 if no numbers in string, converted number otherwise
  */
 
-int _atoi(char *s)
+int _atoi(char *st)
 {
-	int i, sign = 1, flag = 0, output;
-	unsigned int result = 0;
+	int x, pn = 1, bnr = 0, o_p;
+	unsigned int sol = 0;
 
-	for (i = 0;  s[i] != '\0' && flag != 2; i++)
+	for (x = 0;  st[x] != '\0' && bnr != 2; x++)
 	{
-		if (s[i] == '-')
-			sign *= -1;
+		if (st[x] == '-')
+			pn *= -1;
 
-		if (s[i] >= '0' && s[i] <= '9')
+		if (st[x] >= '0' && st[x] <= '9')
 		{
-			flag = 1;
-			result *= 10;
-			result += (s[i] - '0');
+			bnr = 1;
+			sol = sol * 10;
+			sol = sol + (st[x] - '0');
 		}
-		else if (flag == 1)
-			flag = 2;
+		else if (bnr == 1)
+			bnr = 2;
 	}
 
-	if (sign == -1)
-		output = -result;
+	if (pn == -1)
+		o_p = -sol;
 	else
-		output = result;
+		o_p = sol;
 
-	return (output);
+	return (o_p);
 }
