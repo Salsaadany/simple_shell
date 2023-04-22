@@ -23,7 +23,7 @@ int s_lngth(char *st)
  * @st1: 1st string
  * @st2: 2nd strnng
  *
- * Return: -ve if s1 less than s2, +ve if s1 more than s2, 0 if st1 equals to st2
+ * Return: -ve s1<s2, +ve s1>s2, 0 st1equals to st2
  */
 int s_com(char *st1, char *st2)
 {
