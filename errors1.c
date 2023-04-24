@@ -37,13 +37,13 @@ int erratoi_maati(char *s)
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	eputs_maati(info->fname);
+	eputs_maati(": ");
 	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	eputs_maati(": ");
+	eputs_maati(info->argv[0]);
+	eputs_maati(": ");
+	eputs_maati(estr);
 }
 
 /**
