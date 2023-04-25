@@ -136,9 +136,9 @@ void dev_xmd(info_t *n)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(n->pt, n->argv, get_environ(n)) == -1)
+		if (execve(n->path, n->argv, get_environ_maati(n)) == -1)
 		{
-			free_info(n, 1);
+			free_information(n, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
