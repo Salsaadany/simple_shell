@@ -17,18 +17,18 @@ list_t *a_nd(list_t **hd, const char *str, int nmbr)
 	n_hd = malloc(sizeof(list_t));
 	if (!n_hd)
 		return (NULL);
-	_memset((void *)n_hd, 0, sizeof(list_t));
+	st_m((void *)n_hd, 0, sizeof(list_t));
 	n_hd->nmbr = nmbr;
 	if (str)
 	{
-		n_hd->str = _strdup(str);
+		n_hd->str = st_dpl(str);
 		if (!n_hd->str)
 		{
 			free(n_hd);
 			return (NULL);
 		}
 	}
-	n_hd->next = *head;
+	n_hd->next = *hd;
 	*hd = n_hd;
 	return (n_hd);
 }
@@ -52,11 +52,11 @@ list_t *a_nnd(list_t **hd, const char *str, int nmbr)
 	n_nd = malloc(sizeof(list_t));
 	if (!n_nd)
 		return (NULL);
-	_memset((void *)n_nd, 0, sizeof(list_t));
+	st_m((void *)n_nd, 0, sizeof(list_t));
 	n_nd->nmbr = nmbr;
 	if (str)
 	{
-		n_nd->str = _strdup(str);
+		n_nd->str = st_dpl(str);
 		if (!n_nd->str)
 		{
 			free(n_nd);
@@ -86,8 +86,8 @@ size_t p_lst(const list_t *fn)
 
 	while (fn)
 	{
-		_puts(fn->str ? fn->str : "(nil)");
-		_puts("\n");
+		st_inp(fn->str ? fn->str : "(nil)");
+		st_inp("\n");
 		fn = fn->next;
 		x++;
 	}
@@ -127,9 +127,9 @@ int dl_nd(list_t **hd, unsigned int ndx)
 			free(nd);
 			return (1);
 		}
-		i++;
-		prev_node = node;
-		node = node->next;
+		x++;
+		pv_nd = nd;
+		nd = nd->next;
 	}
 	return (0);
 }
