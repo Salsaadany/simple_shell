@@ -36,19 +36,19 @@ char **l_str(list_t *hd)
 	stngs = malloc(sizeof(char *) * (x + 1));
 	if (!stngs)
 		return (NULL);
-	for (i = 0; nd; nd = nd->next, x++)
+	for (x = 0; nd; nd = nd->next, x++)
 	{
-		stng = malloc(_strlen(nd->str) + 1);
+		stng = malloc(s_lngth(nd->str) + 1);
 		if (!stng)
 		{
 			for (y = 0; y < x; y++)
-				free(strngs[y]);
-			free(strngs);
+				free(stngs[y]);
+			free(stngs);
 			return (NULL);
 		}
 
-		stng = _strcpy(stng, nd->stng);
-		stngs[i] = stng;
+		stng = st_coo(stng, nd->stng);
+		stngs[x] = stng;
 	}
 	stngs[x] = NULL;
 	return (stngs);
@@ -66,15 +66,15 @@ size_t p_lst(const list_t *hd)
 
 	while (hd)
 	{
-		_puts(convert_number(hd->num, 10, 0));
+		st_inp(convert_number(hd->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(hd->str ? h->str : "(nil)");
-		_puts("\n");
+		st_inp(hd->str ? hd->str : "(nil)");
+		st_inp("\n");
 		hd = hd->next;
 		x++;
 	}
-	return (i);
+	return (x);
 }
 
 /**
@@ -91,7 +91,7 @@ list_t *sw_nd(list_t *nd, char *px, char c)
 
 	while (nd)
 	{
-		pin = starts_with(nd->str, px);
+		pin = stw_sherry(nd->str, px);
 		if (pin && ((c == -1) || (*pin == c)))
 			return (nd);
 		nd = nd->next;
