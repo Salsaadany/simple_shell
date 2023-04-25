@@ -14,29 +14,29 @@ int msl(info_t *n, char **av)
 
 	while (x != -1 && builtin_ret != -2)
 	{
-		clear_info(n);
+		clear_information(n);
 		if (maati(n))
-			_puts("$ ");
+			st_inp("$ ");
 		_eputchar(BUF_FLUSH);
-		x = get_input(n);
+		x = get_input_lines(n);
 		if (x != -1)
 		{
-			set_info(n, av);
+			set_information(n, av);
 			builtin_ret = l_bn(n);
 			if (builtin_ret == -1)
 				l_exmd(n);
 		}
 		else if (maati(n))
 			_putchar('\n');
-		free_info(n, 0);
+		free_information(n, 0);
 	}
 	write_history(n);
-	free_info(n, 1);
+	free_information(n, 1);
 	if (!maati(n) && n->status)
 		exit(n->status);
 	if (builtin_ret == -2)
 	{
-		if (info->err_num == -1)
+		if (n->err_num == -1)
 			exit(n->status);
 		exit(n->err_num);
 	}
@@ -56,18 +56,18 @@ int l_bn(info_t *n)
 {
 	int x, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
+		{"exit", myexit},
+		{"env", myenv_maati},
+		{"help", myhelp},
+		{"history", myhistory_maati},
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
 		{"alias", _myalias},
 		{NULL, NULL}};
 
-	for (x = 0; builtintbl[i].type; x++)
-		if (_strcmp(n->argv[0], builtintbl[x].type) == 0)
+	for (x = 0; builtintbl[x].type; x++)
+		if (s_com(n->argv[0], builtintbl[x].type) == 0)
 		{
 			n->line_count++;
 			built_in_ret = builtintbl[x].func(n);
@@ -87,28 +87,28 @@ void l_exmd(info_t *n)
 	char *pt = NULL;
 	int x, y;
 
-	n->pt = n->argv[0];
+	n->path = n->argv[0];
 	if (n->linecount_flag == 1)
 	{
 		n->line_count++;
 		n->linecount_flag = 0;
 	}
 	for (x = 0, y = 0; n->arg[x]; x++)
-		if (!is_delim(n->arg[x], " \t\n"))
+		if (!d_islem(n->arg[x], " \t\n"))
 			y++;
 	if (!y)
 		return;
 
-	pt = l_pt(n, _getenv(n, "PATH="), n->argv[0]);
+	pt = l_pt(n, getenv_maati(n, "PATH="), n->argv[0]);
 	if (pt)
 	{
-		n->pt = pt;
+		n->path = pt;
 		dev_xmd(n);
 	}
 	else
 	{
-		if ((maati(n) || _getenv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
-			dev_xmd(info);
+		if ((maati(n) || getenv_maati(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
+			dev_xmd(n);
 		else if (*(n->arg) != '\n')
 		{
 			n->status = 127;
