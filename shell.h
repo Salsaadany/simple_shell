@@ -111,7 +111,7 @@ typedef struct builtin
 } builtin_table;
 
 /* shloop.c --done */
-int msl(info_t *, char **);
+int hsh(info_t *, char **);
 int l_bn(info_t *);
 void l_exmd(info_t *);
 void dev_xmd(info_t *);
