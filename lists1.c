@@ -29,7 +29,7 @@ char **l_str(list_t *hd)
 	list_t *nd = hd;
 	size_t x = l_ln(hd), y;
 	char **stngs;
-	char *stng;
+	char *strng;
 
 	if (!hd || !x)
 		return (NULL);
@@ -38,8 +38,8 @@ char **l_str(list_t *hd)
 		return (NULL);
 	for (x = 0; nd; nd = nd->next, x++)
 	{
-		stng = malloc(s_lngth(nd->str) + 1);
-		if (!stng)
+		strng = malloc(s_lngth(nd->stng) + 1);
+		if (!strng)
 		{
 			for (y = 0; y < x; y++)
 				free(stngs[y]);
@@ -47,7 +47,7 @@ char **l_str(list_t *hd)
 			return (NULL);
 		}
 
-		stng = st_coo(stng, nd->stng);
+		strng = st_coo(strng, nd->stng);
 		stngs[x] = stng;
 	}
 	stngs[x] = NULL;
@@ -69,7 +69,7 @@ size_t p_lst(const list_t *hd)
 		st_inp(convert_number(hd->nmbr, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		st_inp(hd->str ? hd->str : "(nil)");
+		st_inp(hd->stng ? hd->stng : "(nil)");
 		st_inp("\n");
 		hd = hd->next;
 		x++;
@@ -91,7 +91,7 @@ list_t *sw_nd(list_t *nd, char *px, char c)
 
 	while (nd)
 	{
-		pin = stw_sherry(nd->str, px);
+		pin = stw_sherry(nd->stng, px);
 		if (pin && ((c == -1) || (*pin == c)))
 			return (nd);
 		nd = nd->next;
