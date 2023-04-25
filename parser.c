@@ -59,7 +59,7 @@ char *l_pt(info_t *n, char *p_st, char *kd)
 		return (NULL);
 	if ((s_lngth(kd) > 2) && stw_sherry(kd, "./"))
 	{
-		if (ex_cd(info, kd))
+		if (ex_cd(n, kd))
 			return (kd);
 	}
 	while (1)
