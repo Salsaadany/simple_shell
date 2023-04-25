@@ -48,7 +48,7 @@ char **l_str(list_t *hd)
 		}
 
 		strng = st_coo(strng, nd->stng);
-		stngs[x] = stng;
+		stngs[x] = strng;
 	}
 	stngs[x] = NULL;
 	return (stngs);
