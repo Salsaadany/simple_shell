@@ -15,7 +15,7 @@ int ex_cd(info_t *n, char *p)
 	if (!p || stat(p, &fx))
 		return (0);
 
-	if (st.st_mode & S_IFREG)
+	if (fx.st_mode & S_IFREG)
 	{
 		return (1);
 	}
@@ -35,7 +35,7 @@ char *d_crt(char *p_st, int bgn, int trmn)
 	static char buf[1024];
 	int x = 0, y = 0;
 
-	for (y = 0, x = bgn; x < stop; x++)
+	for (y = 0, x = bgn; x < trmn; x++)
 		if (p_st[x] != ':')
 			buf[y++] = p_st[x];
 	buf[y] = 0;
@@ -57,7 +57,7 @@ char *l_pt(info_t *n, char *p_st, char *kd)
 
 	if (!p_st)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(kd, "./"))
+	if ((s_lngth(kd) > 2) && stw_sherry(kd, "./"))
 	{
 		if (ex_cd(info, kd))
 			return (kd);
@@ -68,11 +68,11 @@ char *l_pt(info_t *n, char *p_st, char *kd)
 		{
 			pt = d_crt(p_st, cr_p, x);
 			if (!*pt)
-				_strcat(pt, cmd);
+				st_conc(pt, kd);
 			else
 			{
-				_strcat(pt, "/");
-				_strcat(pt, kd);
+				st_conc(pt, "/");
+				st_conc(pt, kd);
 			}
 			if (ex_cd(n, pt))
 				return (pt);
