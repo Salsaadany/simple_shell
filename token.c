@@ -22,7 +22,7 @@ char **sp_rep(char *st, char *dlm)
 
 	if (count == 0)
 		return (NULL);
-	s = malloc((1 + count) * sizeof(char *));
+	rng = malloc((1 + count) * sizeof(char *));
 	if (!rng)
 		return (NULL);
 	for (w = 0, x = 0; x < count; x++)
@@ -30,7 +30,7 @@ char **sp_rep(char *st, char *dlm)
 		while (d_islem(st[w], dlm))
 			w++;
 		y = 0;
-		while (!d_islem(st[w + y], d) && st[w + y])
+		while (!d_islem(st[w + y], dlm) && st[w + y])
 			y++;
 		rng[x] = malloc((y + 1) * sizeof(char));
 		if (!rng[x])
@@ -41,8 +41,8 @@ char **sp_rep(char *st, char *dlm)
 			return (NULL);
 		}
 		for (z = 0; z < y; z++)
-			s[x][z] = str[w++];
-		s[x][z] = 0;
+			rng[x][z] = st[w++];
+		rng[x][z] = 0;
 	}
 	rng[x] = NULL;
 	return (rng);
