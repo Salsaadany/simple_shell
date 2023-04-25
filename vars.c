@@ -83,14 +83,14 @@ int al_rep(info_t *n)
 
 	for (x = 0; x < 10; x++)
 	{
-		node = node_starts_with(n->alias, n->argv[0], '=');
+		node = sw_nd(n->alias, n->argv[0], '=');
 		if (!node)
 			return (0);
 		free(n->argv[0]);
-		pos = _strchr(node->str, '=');
+		pos = _strchr(node->stng, '=');
 		if (!pos)
 			return (0);
-		pos = _strdup(pos + 1);
+		pos = st_dpl(pos + 1);
 		if (!pos)
 			return (0);
 		n->argv[0] = pos;
@@ -120,17 +120,17 @@ int ve_rep(info_t *n)
 				   st_dpl(convert_number(n->status, 10, 0)));
 			continue;
 		}
-		if (!_strcmp(n->argv[x], "$$"))
+		if (!s_com(n->argv[x], "$$"))
 		{
 			st_rpl(&(n->argv[x]),
 				   st_dpl(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = sw_nd(n->env, &info->argv[x][1], '=');
+		node = sw_nd(n->env, &n->argv[x][1], '=');
 		if (node)
 		{
 			st_rpl(&(n->argv[x]),
-				   st_dpl(_strchr(node->str, '=') + 1));
+				   st_dpl(_strchr(node->stng, '=') + 1));
 			continue;
 		}
 		st_rpl(&n->argv[x], st_dpl(""));
