@@ -70,7 +70,7 @@ int _setenv(info_t *info, char *var, char *value)
 	buf = malloc(s_lngth(var) + s_lngth(value) + 2);
 	if (!buf)
 		return (1);
-	strncpy_maati(buf, var);
+	st_coo(buf, var);
 	st_conc(buf, "=");
 	st_conc(buf, value);
 	node = info->env;
