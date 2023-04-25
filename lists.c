@@ -21,8 +21,8 @@ list_t *a_nd(list_t **hd, const char *str, int nmbr)
 	n_hd->nmbr = nmbr;
 	if (str)
 	{
-		n_hd->str = st_dpl(str);
-		if (!n_hd->str)
+		n_hd->stng = st_dpl(str);
+		if (!n_hd->stng)
 		{
 			free(n_hd);
 			return (NULL);
@@ -56,8 +56,8 @@ list_t *a_nnd(list_t **hd, const char *str, int nmbr)
 	n_nd->nmbr = nmbr;
 	if (str)
 	{
-		n_nd->str = st_dpl(str);
-		if (!n_nd->str)
+		n_nd->stng = st_dpl(str);
+		if (!n_nd->stng)
 		{
 			free(n_nd);
 			return (NULL);
@@ -86,7 +86,7 @@ size_t p_lst(const list_t *fn)
 
 	while (fn)
 	{
-		st_inp(fn->str ? fn->str : "(nil)");
+		st_inp(fn->stng ? fn->stng : "(nil)");
 		st_inp("\n");
 		fn = fn->next;
 		x++;
@@ -113,7 +113,7 @@ int dl_nd(list_t **hd, unsigned int ndx)
 	{
 		nd = *hd;
 		*hd = (*hd)->next;
-		free(nd->str);
+		free(nd->stng);
 		free(nd);
 		return (1);
 	}
@@ -123,7 +123,7 @@ int dl_nd(list_t **hd, unsigned int ndx)
 		if (x == ndx)
 		{
 			pv_nd->next = nd->next;
-			free(nd->str);
+			free(nd->stng);
 			free(nd);
 			return (1);
 		}
@@ -151,7 +151,7 @@ void x_lst(list_t **hd_pt)
 	while (nd)
 	{
 		nx_nd = nd->next;
-		free(nd->str);
+		free(nd->stng);
 		free(nd);
 		nd = nx_nd;
 	}
