@@ -2,7 +2,7 @@
 
 /**
  * maati - if shell is interactive mode return True
- * @info: struct address.
+ * @n: struct address.
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
