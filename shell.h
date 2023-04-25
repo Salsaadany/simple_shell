@@ -180,7 +180,7 @@ int myhelp(info_t *);
 
 /* builtin1.c */
 int myhistory_maati(info_t *);
-int _myalias(info_t *); ///////////
+int _myalias(info_t *);
 
 /* getline.c */
 ssize_t get_input_lines(info_t *);
