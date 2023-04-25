@@ -26,7 +26,7 @@ char *getenv_maati(info_t *info, const char *name)
 
 	while (node)
 	{
-		p = stw_sherry(node->str, name);
+		p = stw_sherry(node->stng, name);
 		if (p && *p)
 			return (p);
 		node = node->next;
