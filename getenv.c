@@ -35,7 +35,7 @@ int _unsetenv(info_t *info, char *var)
 
 	while (node)
 	{
-		p = stw_sherry(node->str, var);
+		p = stw_sherry(node->stng, var);
 		if (p && *p == '=')
 		{
 			info->env_changed = dl_nd(&(info->env), i);
