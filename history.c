@@ -11,16 +11,16 @@ char *get_file(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = _getenv(info, "HOME=");
+	dir = getenv_maati(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (s_lngth(dir) + s_lngth(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, dir);
-	_strcat(buf, "/");
-	_strcat(buf, HIST_FILE);
+	st_coo(buf, dir);
+	st_conc(buf, "/");
+	st_conc(buf, HIST_FILE);
 	return (buf);
 }
 
@@ -97,7 +97,7 @@ int read_history(info_t *info)
 	free(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
-		delete_node_at_index(&(info->history), 0);
+		dl_nd(&(info->history), 0);
 	renumber_history(info);
 	return (info->histcount);
 }
@@ -116,7 +116,7 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 	if (info->history)
 		node = info->history;
-	add_node_end(&node, buf, linecount);
+	a_nnd(&node, buf, linecount);
 
 	if (!info->history)
 		info->history = node;
