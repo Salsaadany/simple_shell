@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * msl - the shell loop main
+ * hsh - the shell loop main
  * @n: info parameter that returns struct's data
  * @av: the argument vector from the main()
  *
  * Return: 0 if successful, 1 if either error occurred, or error code
  */
-int msl(info_t *n, char **av)
+int hsh(info_t *n, char **av)
 {
 	ssize_t x = 0;
 	int builtin_ret = 0;
