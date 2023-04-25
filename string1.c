@@ -33,7 +33,7 @@ char *st_dpl(const char *st)
 	int lng = 0;
 	char *fix;
 
-	if (slng == NULL)
+	if (st == NULL)
 		return (NULL);
 	while (*st++)
 		lng++;
