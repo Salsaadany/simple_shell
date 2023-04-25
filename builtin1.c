@@ -69,8 +69,8 @@ int print_alias(list_t *node)
 
 	if (node)
 	{
-		p = _strchr(node->str, '=');
-		for (a = node->str; a <= p; a++)
+		p = _strchr(node->stng, '=');
+		for (a = node->stng; a <= p; a++)
 			_putchar(*a);
 		_putchar('\'');
 		st_inp(p + 1);
