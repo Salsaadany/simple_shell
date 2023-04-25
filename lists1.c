@@ -27,7 +27,7 @@ size_t l_ln(const list_t *f)
 char **l_str(list_t *hd)
 {
 	list_t *nd = hd;
-	size_t x = l_len(hd), y;
+	size_t x = l_ln(hd), y;
 	char **stngs;
 	char *stng;
 
@@ -66,7 +66,7 @@ size_t p_lst(const list_t *hd)
 
 	while (hd)
 	{
-		st_inp(convert_number(hd->num, 10, 0));
+		st_inp(convert_number(hd->nmbr, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		st_inp(hd->str ? hd->str : "(nil)");
