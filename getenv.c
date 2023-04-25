@@ -76,11 +76,11 @@ int _setenv(info_t *info, char *var, char *value)
 	node = info->env;
 	while (node)
 	{
-		p = stw_sherry(node->str, var);
+		p = stw_sherry(node->stng, var);
 		if (p && *p == '=')
 		{
-			free(node->str);
-			node->str = buf;
+			free(node->stng);
+			node->stng = buf;
 			info->env_changed = 1;
 			return (0);
 		}
