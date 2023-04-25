@@ -66,10 +66,10 @@ ssize_t get_input_lines(info_t *info)
 		j = i; /* init new iterator to current buf position */
 		p = buf + i; /* get pointer for return */
 
-		check_chain(info, buf, &j, i, len);
+		ch_checker(info, buf, &j, i, len);
 		while (j < len) /* iterate to semicolon or end */
 		{
-			if (is_chain(info, buf, &j))
+			if (ch_del(info, buf, &j))
 				break;
 			j++;
 		}
@@ -82,7 +82,7 @@ ssize_t get_input_lines(info_t *info)
 		}
 
 		*buf_p = p; /* pass back pointer to current command position */
-		return (_strlen(p)); /* return length of current command */
+		return (s_lngth(p)); /* return length of current command */
 	}
 
 	*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
@@ -144,7 +144,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (s)
 		_strncat(new_p, buf + i, k - i);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		strncpy_maati(new_p, buf + i, k - i + 1);
 
 	s += k - i;
 	i = k;
@@ -164,7 +164,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
+	st_inp("\n");
+	st_inp("$ ");
 	_putchar(BUF_FLUSH);
 }
