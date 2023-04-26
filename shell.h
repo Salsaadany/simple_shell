@@ -123,6 +123,9 @@ char *l_pt(info_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
+int l_bn(info_t *);
+void l_exmd(info_t *);
+void dev_xmd(info_t *);
 
 /* errors.c --done */
 void eputs_maati(char *);
