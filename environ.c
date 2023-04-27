@@ -8,7 +8,7 @@
  */
 int myenv_maati(info_t *info)
 {
-	p_lst(info->env);
+	p_lst_stng(info->env);
 	return (0);
 }
 
