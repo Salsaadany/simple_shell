@@ -3,7 +3,6 @@
  * hsh - the shell loop main
  * @n: info parameter that returns struct's data
  * @av: the argument vector from the main()
- *
  * Return: 0 if successful, 1 if either error occurred, or error code
  */
 int hsh(info_t *n, char **av)
@@ -45,7 +44,6 @@ int hsh(info_t *n, char **av)
 /**
  * l_bn - locates the built-in command
  * @n: info parameter that returns struct's data
- *
  * Return: -1 if not to be found,
  *			0 for successful execution,
  *			1 if found yet didn't succeed,
@@ -77,7 +75,6 @@ int l_bn(info_t *n)
 /**
  * l_exmd - locates any command in given path
  * @n: info parameter that returns struct's data
- *
  * Return: void
  */
 void l_exmd(info_t *n)
@@ -117,7 +114,6 @@ void l_exmd(info_t *n)
 /**
  * dev_xmd - func's prps is forking exc thrd for running command
  * @n: info parameter that returns struct's data
- *
  * Return: void
  */
 void dev_xmd(info_t *n)
@@ -139,7 +135,6 @@ void dev_xmd(info_t *n)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
