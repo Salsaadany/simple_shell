@@ -195,7 +195,7 @@ void set_information(info_t *, char **);
 void free_information(info_t *, int);
 
 /* environ.c */
-char *getenv_maati(info_t *, const char *);
+char *g_nv(info_t *, const char *);
 int myenv_maati(info_t *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
