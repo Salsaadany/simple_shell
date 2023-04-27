@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * maati - if shell is interactive mode return True
+ * mt - if shell is interactive mode return True
  * @n: struct address.
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int maati(info_t *n)
+int mt(info_t *n)
 {
 	return (isatty(STDIN_FILENO) && n->readfd <= 2);
 }
