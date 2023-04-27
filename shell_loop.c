@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * hsh - the shell loop main
  * @n: info parameter that returns struct's data
@@ -75,7 +74,6 @@ int l_bn(info_t *n)
 		}
 	return (built_in_ret);
 }
-
 /**
  * l_exmd - locates any command in given path
  * @n: info parameter that returns struct's data
@@ -116,7 +114,6 @@ void l_exmd(info_t *n)
 		}
 	}
 }
-
 /**
  * dev_xmd - func's prps is forking exc thrd for running command
  * @n: info parameter that returns struct's data
