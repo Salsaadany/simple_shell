@@ -216,7 +216,7 @@ int renumber_history(info_t *info);
 /* lists.c --done */
 list_t *a_nd(list_t **, const char *, int);
 list_t *a_nnd(list_t **, const char *, int);
-size_t p_lst(const list_t *);
+size_t p_lst_stng(const list_t *);
 int dl_nd(list_t **, unsigned int);
 void x_lst(list_t **);
 
