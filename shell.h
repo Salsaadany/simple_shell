@@ -117,7 +117,7 @@ void l_exmd(info_t *);
 void dev_xmd(info_t *);
 
 /* parser.c --done */
-int ex_cd(info_t *, char *);
+int xd(info_t *, char *);
 char *d_chrt(char *, int, int);
 char *l_pt(info_t *, char *, char *);
 
