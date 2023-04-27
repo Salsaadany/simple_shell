@@ -40,7 +40,6 @@ int hsh(info_t *n, char **av)
 	}
 	return (builtin_ret);
 }
-
 /**
  * l_bn - locates the built-in command
  * @n: info parameter that returns struct's data
