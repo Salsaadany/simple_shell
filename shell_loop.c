@@ -13,7 +13,7 @@ int hsh(info_t *n, char **av)
 	while (x != -1 && builtin_ret != -2)
 	{
 		clear_information(n);
-		if (maati(n))
+		if (mt(n))
 			st_inp("$ ");
 		_eputchar(BUF_FLUSH);
 		x = get_input_lines(n);
@@ -30,7 +30,7 @@ int hsh(info_t *n, char **av)
 	}
 	write_history(n);
 	free_information(n, 1);
-	if (!maati(n) && n->status)
+	if (!mt(n) && n->status)
 		exit(n->status);
 	if (builtin_ret == -2)
 	{
