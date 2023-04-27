@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * ex_cd - determines if a file is an executable command
+ * xd - determines if a file is an executable command
  * @n: the info struct
  * @p: path to the file
  *
  * Return: 1 if true, 0 otherwise
  */
-int ex_cd(info_t *n, char *p)
+int xd(info_t *n, char *p)
 {
 	struct stat fx;
 
@@ -59,7 +59,7 @@ char *l_pt(info_t *n, char *p_st, char *kd)
 		return (NULL);
 	if ((s_lngth(kd) > 2) && stw_sherry(kd, "./"))
 	{
-		if (ex_cd(n, kd))
+		if (xd(n, kd))
 			return (kd);
 	}
 	while (1)
@@ -74,7 +74,7 @@ char *l_pt(info_t *n, char *p_st, char *kd)
 				st_conc(pt, "/");
 				st_conc(pt, kd);
 			}
-			if (ex_cd(n, pt))
+			if (xd(n, pt))
 				return (pt);
 			if (!p_st[x])
 				break;
