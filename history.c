@@ -11,7 +11,7 @@ char *get_file(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = getenv_maati(info, "HOME=");
+	dir = g_nv(info, "HOME=");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (s_lngth(dir) + s_lngth(HIST_FILE) + 2));
