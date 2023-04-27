@@ -93,7 +93,7 @@ void l_exmd(info_t *n)
 	if (!y)
 		return;
 
-	pt = l_pt(n, getenv_maati(n, "PATH="), n->argv[0]);
+	pt = l_pt(n, g_nv(n, "PATH="), n->argv[0]);
 	if (pt)
 	{
 		n->path = pt;
@@ -101,7 +101,7 @@ void l_exmd(info_t *n)
 	}
 	else
 	{
-		if ((maati(n) || getenv_maati(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
+		if ((maati(n) || g_nv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
 			dev_xmd(n);
 		else if (*(n->arg) != '\n')
 		{
