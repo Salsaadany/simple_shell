@@ -101,7 +101,7 @@ void l_exmd(info_t *n)
 	}
 	else
 	{
-		if ((maati(n) || g_nv(n, "PATH=") || n->argv[0][0] == '/') && ex_cd(n, n->argv[0]))
+		if ((mt(n) || g_nv(n,"PATH=") || n->argv[0][0] == '/') && ex_cd(n,n->argv[0]))
 			dev_xmd(n);
 		else if (*(n->arg) != '\n')
 		{
