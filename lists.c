@@ -75,7 +75,7 @@ list_t *a_nnd(list_t **hd, const char *str, int nmbr)
 }
 
 /**
- * p_lst - display list_t linked list of strng
+ * p_lst_stng - display list_t linked list of strng
  * @fn: first node's pntr
  *
  * Return: List's size
