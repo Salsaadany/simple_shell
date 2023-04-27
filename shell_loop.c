@@ -24,7 +24,7 @@ int hsh(info_t *n, char **av)
 			if (builtin_ret == -1)
 				l_exmd(n);
 		}
-		else if (maati(n))
+		else if (mt(n))
 			_putchar('\n');
 		free_information(n, 0);
 	}
