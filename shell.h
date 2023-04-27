@@ -163,7 +163,7 @@ void *_realloc(void *, unsigned int, unsigned int);
 int f_brdm(void **);
 
 /* atoi.c --done */
-int maati(info_t *);
+int mt(info_t *);
 int d_islem(char, char *);
 int isalpha(int);
 int _atoi(char *);
