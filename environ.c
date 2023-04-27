@@ -13,13 +13,13 @@ int myenv_maati(info_t *info)
 }
 
 /**
- * getenv_maati - gets the value of an environ variable
+ * g_nv - gets the value of an environ variable
  * @info: Structure containing potential arguments. Used to maintain
  * @name: env var name
  *
  * Return: the value
  */
-char *getenv_maati(info_t *info, const char *name)
+char *g_nv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
 	char *p;
