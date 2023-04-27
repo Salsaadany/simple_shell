@@ -80,7 +80,7 @@ list_t *a_nnd(list_t **hd, const char *str, int nmbr)
  *
  * Return: List's size
  */
-size_t p_lst(const list_t *fn)
+size_t p_lst_stng(const list_t *fn)
 {
 	size_t x = 0;
 
