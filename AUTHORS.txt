@@ -1,4 +1,4 @@
-# This file comprises of the people that contributed to this repository, thus: 
+# This file comprises of the people that contributed to this repository: 
 
 Mustapha Abo El Maati <mustaphaabouelmaaty@gmail.com>
 Sherweet Alsaadany <cherries_16@yahoo.com>
